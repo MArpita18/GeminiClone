@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import './Sidebar.css'
 import { assets } from "../../assets/assets"
 import { Context } from '../../context/Context'
-const Sidebar = () => {
+const Sidebar = ({ toggleDarkMode, darkMode }) => {
 
     const [extended,setExtended] = useState(false)
     const{onSent,prevPrompts,setRecentPrompt,newChat} = useContext(Context)
@@ -49,6 +49,10 @@ const Sidebar = () => {
             <div className="bottom-item recent-entry">
                 <img src={assets.setting_icon} alt="" />
                 {extended?<p>Settings</p>:null}
+            </div>
+            <div className="bottom-item recent-entry dark-mode-toggle" onClick={toggleDarkMode}>
+                
+                {extended ? <p>{darkMode ? 'Light Mode' : 'Dark Mode'}</p> : null}
             </div>
         </div>
     </div>
